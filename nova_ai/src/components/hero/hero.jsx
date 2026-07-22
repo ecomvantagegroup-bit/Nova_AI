@@ -25,37 +25,51 @@ export default defineComponent({
 
         {/* Hero Content */}
         <div class="hero-content">
-          <span class="hero-badge">
-            🚀 Welcome to Nova AI
-          </span>
 
-          <h1 class="hero-title">
-            Build Modern
-            <span class="hero-title-gradient">
-              Artificial Intelligence, Engineered for Impact.
+          {/* LEFT SIDE */}
+          <div class="hero-left">
+            <span class="hero-badge">
+              🚀 Welcome to Nova AI
             </span>
-          </h1>
 
-          <p class="hero-description">
-            We build intelligent AI systems, autonomous agents, and scalable
-            solutions that help businesses innovate, automate, and grow.
-          </p>
+            <h1 class="hero-title">
+              Build Modern
+              <span class="hero-title-gradient">
+                Artificial Intelligence, Engineered for Impact.
+              </span>
+            </h1>
 
-          <div class="hero-buttons">
-            <button
-              onClick={() => scrollToSection("about")}
-              class="btn-primary"
-            >
-              Get Started
-            </button>
+            <p class="hero-description">
+              We build intelligent AI systems, autonomous agents, and scalable
+              solutions that help businesses innovate, automate, and grow.
+            </p>
 
-            <button
-              onClick={() => scrollToSection("contact")}
-              class="btn-secondary"
-            >
-              Contact Us
-            </button>
+            <div class="hero-buttons">
+              <button
+                onClick={() => scrollToSection("about")}
+                class="btn-primary"
+              >
+                Get Started
+              </button>
+
+              <button
+                onClick={() => scrollToSection("contact")}
+                class="btn-secondary"
+              >
+                Contact Us
+              </button>
+            </div>
           </div>
+
+          {/* RIGHT SIDE */}
+          <div class="hero-right">
+            <div class="hero-animation">
+              {/* Replace this with your Three.js component or GIF */}
+              {/* <HeroCanvas /> */}
+              {/* <img src="/hero.gif" alt="Hero Animation" /> */}
+            </div>
+          </div>
+
         </div>
 
         {/* Scroll Indicator */}

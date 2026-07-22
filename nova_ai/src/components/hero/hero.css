@@ -1,7 +1,10 @@
 @reference "../../style.css";
+
 .hero {
-  @apply relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950;
+  @apply relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 flex items-center;
 }
+
+/* Background */
 
 .hero-overlay {
   @apply absolute inset-0 bg-black/40;
@@ -14,40 +17,110 @@
     radial-gradient(circle at bottom left, rgb(124 58 237 / 0.2), transparent 40%);
 }
 
+/* Main Layout */
+
 .hero-content {
-  @apply relative z-10 mx-auto max-w-5xl px-6 text-center text-white;
+  @apply relative z-10 mx-auto w-full max-w-7xl px-6
+         flex flex-col md:flex-row
+         items-center justify-between
+         gap-16;
+}
+
+/* LEFT SIDE */
+
+.hero-left {
+  @apply w-full md:w-1/2 text-left;
 }
 
 .hero-badge {
-  @apply inline-block rounded-full border border-blue-400 bg-blue-500/10 px-5 py-2 text-sm font-medium text-blue-300;
+  @apply inline-block rounded-full border border-blue-400 bg-blue-500/10
+         px-5 py-2 text-sm font-medium text-blue-300;
 }
 
 .hero-title {
-  @apply mt-8 text-5xl font-extrabold leading-tight md:text-6xl;
+  @apply mt-8 text-5xl md:text-6xl font-extrabold leading-tight;
 }
 
 .hero-title-gradient {
-  @apply block bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent;
+  @apply block bg-gradient-to-r
+         from-blue-400
+         to-cyan-300
+         bg-clip-text
+         text-transparent;
 }
 
 .hero-description {
-  @apply mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl;
+  @apply mt-6 max-w-xl
+         text-lg md:text-xl
+         leading-8
+         text-slate-300;
 }
 
+/* BUTTONS */
+
 .hero-buttons {
-  @apply mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row;
+  @apply mt-10 flex flex-wrap gap-5;
 }
 
 .btn-primary {
-  @apply rounded-xl bg-blue-600 px-8 py-4 font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:bg-blue-700;
+  @apply rounded-xl
+         bg-blue-600
+         px-8 py-4
+         font-semibold
+         shadow-lg
+         transition-all
+         duration-300
+         hover:bg-blue-700
+         hover:scale-105;
 }
 
 .btn-secondary {
-  @apply rounded-xl border border-white px-8 py-4 font-semibold transition-all duration-300 hover:bg-white hover:text-slate-900;
+  @apply rounded-xl
+         border
+         border-white
+         px-8 py-4
+         font-semibold
+         transition-all
+         duration-300
+         hover:bg-white
+         hover:text-slate-900;
 }
 
+/* RIGHT SIDE */
+
+.hero-right {
+  @apply w-full md:w-1/2
+         flex
+         items-center
+         justify-center;
+}
+
+.hero-animation {
+  @apply w-full
+         max-w-xl
+         h-[500px]
+         rounded-3xl;
+}
+
+/* Example if using GIF */
+
+.hero-animation img {
+  @apply w-full h-full object-contain;
+}
+
+/* Scroll Indicator */
+
 .scroll-indicator {
-  @apply absolute bottom-10 left-1/2 -translate-x-1/2 text-4xl text-white transition-colors duration-300 hover:text-blue-400;
+  @apply absolute
+         bottom-10
+         left-1/2
+         -translate-x-1/2
+         text-4xl
+         text-white
+         transition-colors
+         duration-300
+         hover:text-blue-400;
+
   animation: bounce 1.5s infinite;
 }
 
@@ -66,5 +139,29 @@
 
   60% {
     transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .hero-content {
+    @apply text-center;
+  }
+
+  .hero-left {
+    @apply text-center;
+  }
+
+  .hero-buttons {
+    @apply justify-center;
+  }
+
+  .hero-right {
+    @apply mt-10;
+  }
+
+  .hero-animation {
+    @apply h-[320px];
   }
 }
