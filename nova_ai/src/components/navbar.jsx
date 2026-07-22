@@ -8,7 +8,7 @@ export default defineComponent({
     const scrolled = ref(false);
 
     const links = [
-      { name: "Home", id: "home" },
+      { name: "Home", id: "hero" },
       { name: "About", id: "about" },
       { name: "Services", id: "services" },
       { name: "Contact", id: "contact" },

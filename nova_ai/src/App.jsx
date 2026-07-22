@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
 
 export default {
   name: "App",
@@ -7,13 +8,8 @@ export default {
     return (
       <>
         <Navbar />
-
-        <section
-          id="home"
-          class="min-h-screen flex items-center justify-center bg-slate-100"
-        >
-          <h1 class="text-5xl font-bold">Home</h1>
-        </section>
+        <Hero />
+        
 
         <section
           id="about"
