@@ -50,7 +50,7 @@ export default defineComponent({
         <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
 
           <h1 class="text-2xl font-bold text-blue-600">
-            VueJS
+            Nova AI
           </h1>
 
           {/* Desktop Menu */}
