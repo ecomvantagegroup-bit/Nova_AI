@@ -1,0 +1,70 @@
+@reference "../../style.css";
+.hero {
+  @apply relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950;
+}
+
+.hero-overlay {
+  @apply absolute inset-0 bg-black/40;
+}
+
+.hero-bg {
+  @apply absolute inset-0;
+  background:
+    radial-gradient(circle at top right, rgb(37 99 235 / 0.2), transparent 40%),
+    radial-gradient(circle at bottom left, rgb(124 58 237 / 0.2), transparent 40%);
+}
+
+.hero-content {
+  @apply relative z-10 mx-auto max-w-5xl px-6 text-center text-white;
+}
+
+.hero-badge {
+  @apply inline-block rounded-full border border-blue-400 bg-blue-500/10 px-5 py-2 text-sm font-medium text-blue-300;
+}
+
+.hero-title {
+  @apply mt-8 text-5xl font-extrabold leading-tight md:text-6xl;
+}
+
+.hero-title-gradient {
+  @apply block bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent;
+}
+
+.hero-description {
+  @apply mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl;
+}
+
+.hero-buttons {
+  @apply mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row;
+}
+
+.btn-primary {
+  @apply rounded-xl bg-blue-600 px-8 py-4 font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:bg-blue-700;
+}
+
+.btn-secondary {
+  @apply rounded-xl border border-white px-8 py-4 font-semibold transition-all duration-300 hover:bg-white hover:text-slate-900;
+}
+
+.scroll-indicator {
+  @apply absolute bottom-10 left-1/2 -translate-x-1/2 text-4xl text-white transition-colors duration-300 hover:text-blue-400;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}

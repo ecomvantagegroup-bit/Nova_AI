@@ -1,4 +1,5 @@
 import { defineComponent, ref, onMounted, onUnmounted } from "vue";
+import "./navbar.css";
 
 export default defineComponent({
   name: "Navbar",
@@ -41,24 +42,19 @@ export default defineComponent({
     return () => (
       <header
         class={[
-          "fixed top-0 left-0 w-full z-50 transition-all duration-300",
-          scrolled.value
-            ? "bg-white/70 backdrop-blur-lg shadow-md"
-            : "bg-transparent",
+          "navbar",
+          scrolled.value ? "navbar-scrolled" : "navbar-transparent",
         ]}
       >
-        <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-
-          <h1 class="text-2xl font-bold text-blue-600">
-            Nova AI
-          </h1>
+        <nav class="navbar-container">
+          <h1 class="navbar-logo">Nova AI</h1>
 
           {/* Desktop Menu */}
-          <ul class="hidden md:flex items-center gap-8 font-medium">
+          <ul class="navbar-menu">
             {links.map((link) => (
               <li key={link.id}>
                 <button
-                  class="hover:text-blue-600 transition"
+                  class="navbar-link"
                   onClick={() => scrollTo(link.id)}
                 >
                   {link.name}
@@ -69,7 +65,7 @@ export default defineComponent({
 
           {/* Mobile Button */}
           <button
-            class="md:hidden text-3xl"
+            class="navbar-mobile-btn"
             onClick={() => (mobileOpen.value = !mobileOpen.value)}
           >
             ☰
@@ -78,11 +74,11 @@ export default defineComponent({
 
         {/* Mobile Menu */}
         {mobileOpen.value && (
-          <div class="md:hidden bg-white shadow-lg">
+          <div class="navbar-mobile-menu">
             {links.map((link) => (
               <button
                 key={link.id}
-                class="block w-full text-left px-6 py-4 border-b hover:bg-gray-100"
+                class="navbar-mobile-link"
                 onClick={() => scrollTo(link.id)}
               >
                 {link.name}
