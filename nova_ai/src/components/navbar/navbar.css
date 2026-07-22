@@ -1,7 +1,23 @@
 @reference "../../style.css";
 
 .navbar {
-  @apply fixed top-0 left-0 z-50 w-full transition-all duration-300;
+  @apply fixed top-0 left-0 z-50 w-full;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease,
+    background-color 0.35s ease,
+    backdrop-filter 0.35s ease;
+}
+
+.navbar-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.navbar-visible {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .navbar-transparent {
