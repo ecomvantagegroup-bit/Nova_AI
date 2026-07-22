@@ -6,76 +6,71 @@ export default defineComponent({
 
   setup() {
     const scrollToSection = (id) => {
-      const section = document.getElementById(id);
-
-      if (section) {
-        section.scrollIntoView({
-          behavior: "smooth",
-        });
-      }
+      document.getElementById(id)?.scrollIntoView({
+        behavior: "smooth",
+      });
     };
 
     return () => (
       <section id="hero" class="hero">
-        {/* Background Overlay */}
+        {/* Background */}
         <div class="hero-overlay"></div>
-
-        {/* Animated Background */}
         <div class="hero-bg"></div>
 
-        {/* Hero Content */}
         <div class="hero-content">
-
-          {/* LEFT SIDE */}
+          {/* Left */}
           <div class="hero-left">
             <span class="hero-badge">
-              🚀 Welcome to Nova AI
+              AI • Automation • Innovation
             </span>
 
             <h1 class="hero-title">
-              Build Modern
+              Building the
               <span class="hero-title-gradient">
-                Artificial Intelligence, Engineered for Impact.
+                next generation
               </span>
+              of intelligent software.
             </h1>
 
             <p class="hero-description">
-              We build intelligent AI systems, autonomous agents, and scalable
-              solutions that help businesses innovate, automate, and grow.
+              Nova AI designs intelligent applications, autonomous agents, and
+              scalable AI solutions that help businesses automate workflows,
+              improve decision-making, and accelerate growth.
             </p>
 
             <div class="hero-buttons">
               <button
-                onClick={() => scrollToSection("about")}
                 class="btn-primary"
+                onClick={() => scrollToSection("contact")}
               >
-                Get Started
+                Start a Project
               </button>
 
               <button
-                onClick={() => scrollToSection("contact")}
                 class="btn-secondary"
+                onClick={() => scrollToSection("about")}
               >
-                Contact Us
+                Learn More
               </button>
             </div>
           </div>
 
-          {/* RIGHT SIDE */}
+          {/* Right */}
           <div class="hero-right">
             <div class="hero-animation">
-              {/* Replace this with your Three.js component or GIF */}
+              {/* Three.js Canvas */}
               {/* <HeroCanvas /> */}
-              {/* <img src="/hero.gif" alt="Hero Animation" /> */}
+
+              {/* OR GIF */}
+              {/* <img src="/hero.gif" alt="AI Animation" /> */}
             </div>
           </div>
-
         </div>
 
-        {/* Scroll Indicator */}
         <button
-          onClick={() => scrollToSection("about")}
           class="scroll-indicator"
+          onClick={() => scrollToSection("about")}
+          aria-label="Scroll Down"
         >
           ↓
         </button>
