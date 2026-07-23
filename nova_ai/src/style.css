@@ -12,3 +12,8 @@ body {
 button {
   cursor: pointer;
 }
+
+.page-section {
+  position: relative;
+  width: 100%;
+}
