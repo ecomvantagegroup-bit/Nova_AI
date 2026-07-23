@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/NOVA_AI/',
+  base: '/nova_ai/',
   plugins: [
     vue(),
     tailwindcss(),
