@@ -25,7 +25,7 @@ export default defineComponent({
 
       // 1. Scene & Camera Setup
       scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
+      camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
       camera.position.z = 2.8;
 
       // 2. Renderer Setup
