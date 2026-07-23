@@ -1,10 +1,11 @@
 import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import FeatureCard from "./FeatureCard";
+import { Flip } from "gsap/Flip";
+import FeatureCard from "./featuresCards.jsx";
 import "./features.css";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, Flip);
 
 const featureItems = [
   {
@@ -62,68 +63,151 @@ export default defineComponent({
 
   setup() {
     const featuresRef = ref(null);
+    const modalRef = ref(null);
+    const activeCardId = ref(null);
+    let activeIndex = null;
     let ctx = null;
 
+    // Open Card Modal using GSAP Flip
+    const openModal = (id) => {
+      const cardIndex = featureItems.findIndex((item) => item.id === id);
+      if (cardIndex === -1) return;
+
+      const cardEl = featuresRef.value.querySelector(`[data-card-content="${id}"]`);
+      const modalContentEl = modalRef.value.querySelector(".content");
+      const overlayEl = modalRef.value.querySelector(".overlay");
+
+      if (!cardEl || !modalContentEl) return;
+
+      const state = Flip.getState(cardEl);
+
+      // Move element to Modal Container
+      modalContentEl.appendChild(cardEl);
+      activeCardId.value = id;
+      activeIndex = cardIndex;
+
+      // Make Modal Container Visible
+      gsap.set(modalRef.value, { autoAlpha: 1 });
+      gsap.to(overlayEl, { autoAlpha: 0.75, duration: 0.35, ease: "power1.inOut" });
+
+      // Execute Flip Animation
+      Flip.from(state, {
+        duration: 0.6,
+        ease: "power2.inOut",
+        onComplete: () => {
+          // Reveal inner expanded details
+          const innerDetails = cardEl.querySelector(".modal-inner-details");
+          if (innerDetails) {
+            gsap.fromTo(
+              innerDetails.children,
+              { opacity: 0, y: 15 },
+              { opacity: 1, y: 0, duration: 0.35, stagger: 0.06, ease: "power2.out" }
+            );
+          }
+        },
+      });
+    };
+
+    // Close Modal and return card back to its Grid Box
+    const closeModal = () => {
+      if (activeIndex === null || !activeCardId.value) return;
+
+      const cardEl = modalRef.value.querySelector(`[data-card-content="${activeCardId.value}"]`);
+      const gridBoxContainers = featuresRef.value.querySelectorAll(".box");
+      const targetGridBox = gridBoxContainers[activeIndex];
+      const overlayEl = modalRef.value.querySelector(".overlay");
+
+      if (!cardEl || !targetGridBox) return;
+
+      const state = Flip.getState(cardEl);
+
+      // Return element to original grid container
+      targetGridBox.appendChild(cardEl);
+
+      // Fade out Overlay and Modal
+      gsap.to([modalRef.value, overlayEl], {
+        autoAlpha: 0,
+        duration: 0.35,
+        ease: "power1.inOut",
+      });
+
+      // Execute Flip Back
+      Flip.from(state, {
+        duration: 0.6,
+        ease: "power2.inOut",
+        absolute: true,
+        onComplete: () => {
+          activeCardId.value = null;
+          activeIndex = null;
+          gsap.set(cardEl, { zIndex: "auto" });
+        },
+      });
+
+      gsap.set(cardEl, { zIndex: 1002 });
+    };
+
     onMounted(() => {
-      // Scoped GSAP Context bound to container element
       ctx = gsap.context(() => {
-        // Entrance Timeline for Header
-        const headerTL = gsap.timeline({
+        // Master Entrance Timeline
+        const headerTl = gsap.timeline({
           scrollTrigger: {
             trigger: featuresRef.value,
             start: "top 80%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play reverse play reverse",
           },
         });
 
-        headerTL
-          .from(".features-overlay", {
+        // 1. Badge Slide & Fade
+        headerTl
+          .from(".features-badge", {
             opacity: 0,
-            duration: 0.8,
+            y: 20,
+            duration: 0.4,
             ease: "power2.out",
           })
-          .from(
-            ".features-badge",
-            {
-              opacity: 0,
-              y: 20,
-              duration: 0.5,
-              ease: "power3.out",
-            },
-            "-=0.4"
-          )
+          // 2. Title Reveal
           .from(
             ".features-title",
             {
               opacity: 0,
-              y: 30,
-              duration: 0.6,
+              y: 28,
+              duration: 0.55,
               ease: "power3.out",
             },
-            "-=0.3"
+            "-=0.25"
           )
+          // 3. Description Reveal
           .from(
             ".features-description",
             {
               opacity: 0,
               y: 20,
-              duration: 0.5,
-              ease: "power3.out",
+              duration: 0.45,
+              ease: "power2.out",
             },
             "-=0.3"
           );
 
-        // Staggered reveal targeting individual .feature-card instances
-        gsap.from(".feature-card", {
+        // Continuous Animated Gradient on Title
+        gsap.to(".features-title-gradient", {
+          backgroundPosition: "200% center",
+          duration: 5,
+          repeat: -1,
+          ease: "none",
+        });
+
+        // Grid Box Entrance Sequence
+        gsap.from(".box", {
           opacity: 0,
-          y: 50,
-          duration: 0.7,
-          stagger: 0.12,
+          y: 40,
+          duration: 0.5,
+          stagger: 0.08,
           ease: "power3.out",
+          clearProps: "transform,opacity", // Clears GSAP overrides so hover styles work seamlessly
           scrollTrigger: {
-            trigger: ".features-grid",
+            trigger: ".boxes-container",
             start: "top 85%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play reverse play reverse",
           },
         });
       }, featuresRef.value);
@@ -133,38 +217,47 @@ export default defineComponent({
       ctx?.revert();
     });
 
-    return () => (
-      <section ref={featuresRef} id="features" class="features-section">
-        {/* Background Overlay Effects */}
-        <div class="features-overlay"></div>
-        <div class="features-bg-glow"></div>
+    return () => {
+      return (
+        <section ref={featuresRef} id="features" class="wrapper features-section">
+          {/* Background Overlays */}
+          <div class="features-overlay"></div>
+          <div class="features-bg-glow"></div>
 
-        {/* Section Header */}
-        <div class="features-header">
-          <span class="features-badge">Capabilities</span>
-          <h2 class="features-title">
-            Everything you need to build{" "}
-            <span class="features-title-gradient">intelligent systems.</span>
-          </h2>
-          <p class="features-description">
-            Power your business operations with an enterprise-ready AI suite designed
-            for speed, accuracy, and enterprise reliability.
-          </p>
-        </div>
+          {/* Section Header */}
+          <div class="features-header">
+            <span class="features-badge">Capabilities</span>
+            <h2 class="features-title">
+              Everything you need to build{" "}
+              <span class="features-title-gradient">intelligent systems.</span>
+            </h2>
+            <p class="features-description">
+              Power your business operations with an enterprise-ready AI suite designed
+              for speed, accuracy, and enterprise reliability.
+            </p>
+          </div>
 
-        {/* Grid Container rendering template components */}
-        <div class="features-grid">
-          {featureItems.map((feature) => (
-            <FeatureCard
-              key={feature.id}
-              title={feature.title}
-              description={feature.description}
-              tag={feature.tag}
-              iconName={feature.iconName}
-            />
-          ))}
-        </div>
-      </section>
-    );
+          {/* Grid Box Containers */}
+          <div class="boxes-container">
+            {featureItems.map((feature) => (
+              <div key={feature.id} class="box">
+                <FeatureCard
+                  feature={feature}
+                  isExpanded={activeCardId.value === feature.id}
+                  onOpen={openModal}
+                  onClose={closeModal}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* FLIP Modal Portal Container */}
+          <div ref={modalRef} class="modal">
+            <div class="overlay" onClick={closeModal}></div>
+            <div class="content"></div>
+          </div>
+        </section>
+      );
+    };
   },
 });

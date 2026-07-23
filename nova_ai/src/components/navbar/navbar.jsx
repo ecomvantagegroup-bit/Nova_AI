@@ -11,8 +11,8 @@ export default defineComponent({
 
     const links = [
       { name: "Home", id: "hero" },
+      { name: "Services", id: "features" },
       { name: "About", id: "about" },
-      { name: "Services", id: "services" },
       { name: "Contact", id: "contact" },
     ];
 
