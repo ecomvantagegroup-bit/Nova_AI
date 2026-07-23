@@ -74,14 +74,21 @@
          lg:text-5xl;
 }
 
+/* Animated Gradient Subtext */
 .features-title-gradient {
-  @apply inline-block
-         bg-gradient-to-r
-         from-blue-400
-         via-cyan-300
-         to-purple-400
-         bg-clip-text
-         text-transparent;
+  background: linear-gradient(
+    90deg,
+    #60a5fa 0%,
+    #67e8f9 25%,
+    #c084fc 50%,
+    #67e8f9 75%,
+    #60a5fa 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .features-description {

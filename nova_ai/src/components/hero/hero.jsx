@@ -216,13 +216,6 @@ export default defineComponent({
           </div>
         </div>
 
-        <button
-          class="scroll-indicator"
-          aria-label="Scroll Down"
-          onClick={() => scrollToSection("about")}
-        >
-          ↓
-        </button>
       </section>
     );
   },

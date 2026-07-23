@@ -147,72 +147,81 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      ctx = gsap.context(() => {
-        // Master Entrance Timeline
-        const headerTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: featuresRef.value,
-            start: "top 80%",
-            toggleActions: "play reverse play reverse",
-          },
-        });
+    ctx = gsap.context(() => {
+      // ----------------------------------------------------
+      // FEATURES HEADER ANIMATION TIMELINE
+      // ----------------------------------------------------
+      const headerTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".features-header",
+          start: "top 85%", // Starts animation when the header is 85% down the viewport
+          toggleActions: "play reverse play reverse", // Replays gracefully on re-entry
+        },
+      });
 
-        // 1. Badge Slide & Fade
-        headerTl
-          .from(".features-badge", {
+      headerTl
+        // 1. Badge pop/slide in
+        .from(".features-badge", {
+          opacity: 0,
+          y: 20,
+          scale: 0.9,
+          duration: 0.45,
+          ease: "back.out(1.7)",
+        })
+
+        // 2. Main Title slide up
+        .from(
+          ".features-title",
+          {
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            ease: "power3.out",
+          },
+          "-=0.2" // Overlaps with badge animation by 0.2s
+        )
+
+        // 3. Sub-description slide up
+        .from(
+          ".features-description",
+          {
             opacity: 0,
             y: 20,
-            duration: 0.4,
+            duration: 0.5,
             ease: "power2.out",
-          })
-          // 2. Title Reveal
-          .from(
-            ".features-title",
-            {
-              opacity: 0,
-              y: 28,
-              duration: 0.55,
-              ease: "power3.out",
-            },
-            "-=0.25"
-          )
-          // 3. Description Reveal
-          .from(
-            ".features-description",
-            {
-              opacity: 0,
-              y: 20,
-              duration: 0.45,
-              ease: "power2.out",
-            },
-            "-=0.3"
-          );
-
-        // Continuous Animated Gradient on Title
-        gsap.to(".features-title-gradient", {
-          backgroundPosition: "200% center",
-          duration: 5,
-          repeat: -1,
-          ease: "none",
-        });
-
-        // Grid Box Entrance Sequence
-        gsap.from(".box", {
-          opacity: 0,
-          y: 40,
-          duration: 0.5,
-          stagger: 0.08,
-          ease: "power3.out",
-          clearProps: "transform,opacity", // Clears GSAP overrides so hover styles work seamlessly
-          scrollTrigger: {
-            trigger: ".boxes-container",
-            start: "top 85%",
-            toggleActions: "play reverse play reverse",
           },
-        });
-      }, featuresRef.value);
-    });
+          "-=0.3"
+        );
 
+      // ----------------------------------------------------
+      // CONTINUOUS GRADIENT SHIFT ON "intelligent systems"
+      // ----------------------------------------------------
+      gsap.to(".features-title-gradient", {
+        backgroundPosition: "200% center",
+        duration: 5,
+        repeat: -1,
+        ease: "none",
+      });
+
+      // ----------------------------------------------------
+      // CARDS GRID ANIMATION
+      // ----------------------------------------------------
+      gsap.from(".box", {
+        opacity: 0,
+        y: 40,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: "power3.out",
+        clearProps: "transform,opacity", // Restores inline styling so hover states work seamlessly
+        scrollTrigger: {
+          trigger: ".boxes-container",
+          start: "top 85%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
+    }, featuresRef.value);
+  });
+  
     onBeforeUnmount(() => {
       ctx?.revert();
     });
