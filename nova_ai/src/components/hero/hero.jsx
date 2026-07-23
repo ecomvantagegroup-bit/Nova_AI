@@ -1,6 +1,7 @@
 import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import HeroCanvas from "./hero_canvas.jsx";
 import "./hero.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -159,6 +160,7 @@ export default defineComponent({
           <div class="hero-right">
             <div class="hero-animation">
               {/* Canvas / Illustration target */}
+              <HeroCanvas />
             </div>
           </div>
         </div>
