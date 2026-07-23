@@ -1,50 +1,110 @@
 @reference "../../style.css";
 
+/* ==========================================================
+   HERO SECTION
+   ========================================================== */
+
 .hero {
-  @apply relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 flex items-center;
+  @apply relative
+         flex
+         min-h-screen
+         items-center
+         overflow-hidden
+         bg-gradient-to-br
+         from-slate-950
+         via-slate-900
+         to-blue-950;
 }
 
-/* Background */
+/* ==========================================================
+   BACKGROUND
+   ========================================================== */
 
 .hero-overlay {
-  @apply absolute inset-0 bg-black/40;
+  @apply absolute inset-0;
+
+  background: rgba(0, 0, 0, 0.45);
 }
 
 .hero-bg {
   @apply absolute inset-0;
+
+  /* Multiple radial gradients for depth */
   background:
-    radial-gradient(circle at top right, rgb(37 99 235 / 0.2), transparent 40%),
-    radial-gradient(circle at bottom left, rgb(124 58 237 / 0.2), transparent 40%);
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(59, 130, 246, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(168, 85, 247, 0.18),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(34, 211, 238, 0.12),
+      transparent 30%
+    );
+
+  will-change: transform;
 }
 
-/* Main Layout */
+/* ==========================================================
+   MAIN CONTENT
+   ========================================================== */
 
 .hero-content {
-  @apply relative z-10 mx-auto
-         w-full max-w-7xl
-         px-6 md:px-10 lg:px-16
-         flex flex-col md:flex-row
-         items-center justify-between
-         gap-16 lg:gap-24;
+  @apply relative
+         z-10
+         mx-auto
+         flex
+         w-full
+         max-w-7xl
+         flex-col
+         items-center
+         justify-between
+         gap-16
+         px-6
+         md:flex-row
+         md:px-10
+         lg:gap-24
+         lg:px-16;
 }
 
-/* LEFT SIDE */
+/* ==========================================================
+   LEFT SIDE
+   ========================================================== */
 
 .hero-left {
-  @apply w-full md:w-1/2 text-left;
+  @apply w-full md:w-1/2;
 }
 
+/* Badge */
+
 .hero-badge {
-  @apply inline-flex items-center
+  @apply inline-flex
+         items-center
          rounded-full
-         border border-blue-500/30
-         bg-blue-500/10
-         px-4 py-2
+         border
+         border-blue-400/20
+         bg-white/5
+         px-4
+         py-2
          text-xs
          font-medium
          tracking-wide
-         text-blue-300;
+         text-blue-300
+         backdrop-blur-md;
+
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.08);
+
+  will-change: transform, opacity;
 }
+
+/* ==========================================================
+   TITLE
+   ========================================================== */
 
 .hero-title {
   @apply mt-8
@@ -56,7 +116,11 @@
          text-white
          md:text-5xl
          lg:text-6xl;
+
+  will-change: transform, opacity;
 }
+
+/* Gradient text */
 
 .hero-title-gradient {
   @apply mt-2
@@ -67,7 +131,15 @@
          to-sky-400
          bg-clip-text
          text-transparent;
+
+  background-size: 250% auto;
+
+  will-change: background-position;
 }
+
+/* ==========================================================
+   DESCRIPTION
+   ========================================================== */
 
 .hero-description {
   @apply mt-8
@@ -76,9 +148,13 @@
          leading-8
          text-slate-400
          md:text-lg;
+
+  will-change: transform, opacity;
 }
 
-/* BUTTONS */
+/* ==========================================================
+   BUTTONS
+   ========================================================== */
 
 .hero-buttons {
   @apply mt-10
@@ -87,95 +163,159 @@
          gap-4;
 }
 
-.btn-primary {
-  @apply rounded-xl
-         bg-blue-600
-         px-7 py-3.5
-         text-sm
-         font-semibold
-         text-white
-         shadow-lg shadow-blue-600/20
-         transition-all
-         duration-300
-         hover:scale-105
-         hover:bg-blue-700;
-}
-
+.btn-primary,
 .btn-secondary {
   @apply rounded-xl
-         border
-         border-slate-600
-         bg-transparent
-         px-7 py-3.5
+         px-7
+         py-3.5
          text-sm
          font-semibold
-         text-slate-200
          transition-all
-         duration-300
-         hover:border-white
-         hover:bg-white
-         hover:text-slate-900;
+         duration-300;
+
+  transform-origin: center;
+  will-change: transform, opacity;
 }
 
-/* RIGHT SIDE */
+/* Primary */
+
+.btn-primary {
+  @apply bg-blue-600
+         text-white;
+
+  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.25);
+}
+
+.btn-primary:hover {
+  @apply bg-blue-700;
+
+  transform: translateY(-4px) scale(1.04);
+
+  box-shadow: 0 20px 50px rgba(37, 99, 235, 0.35);
+}
+
+/* Secondary */
+
+.btn-secondary {
+  @apply border
+         border-slate-600
+         bg-white/5
+         text-slate-200
+         backdrop-blur-md;
+}
+
+.btn-secondary:hover {
+  @apply border-white
+         bg-white
+         text-slate-900;
+
+  transform: translateY(-4px) scale(1.04);
+
+  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================
+   RIGHT SIDE
+   ========================================================== */
 
 .hero-right {
-  @apply w-full md:w-1/2
-         flex
+  @apply flex
+         w-full
          items-center
-         justify-center;
+         justify-center
+         md:w-1/2;
 }
 
 .hero-animation {
   @apply h-[420px]
          w-full
          max-w-[520px];
+
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
 }
+
+/* Three.js Canvas */
 
 .hero-animation canvas {
   @apply h-full w-full;
 }
-/* Example if using GIF */
+
+/* GIF Support */
 
 .hero-animation img {
-  @apply w-full h-full object-contain;
+  @apply h-full
+         w-full
+         object-contain;
 }
 
-/* Scroll Indicator */
+/* ==========================================================
+   SCROLL INDICATOR
+   ========================================================== */
 
 .scroll-indicator {
   @apply absolute
          bottom-10
          left-1/2
-         -translate-x-1/2
          text-4xl
          text-white
          transition-colors
-         duration-300
-         hover:text-blue-400;
+         duration-300;
 
-  animation: bounce 1.5s infinite;
+  transform: translateX(-50%);
+
+  will-change: transform, opacity;
 }
 
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-
-  60% {
-    transform: translateX(-50%) translateY(-5px);
-  }
+.scroll-indicator:hover {
+  @apply text-blue-400;
 }
 
-/* Mobile */
+/* ==========================================================
+   GSAP PREP
+   Elements start hidden to avoid flash before animation.
+   GSAP will reveal them.
+   ========================================================== */
+
+.hero-badge,
+.hero-title,
+.hero-description,
+.hero-buttons button,
+.hero-animation,
+.scroll-indicator {
+  opacity: 0;
+}
+
+/* ==========================================================
+   OPTIONAL GLOW EFFECTS
+   ========================================================== */
+
+.hero::before {
+  content: "";
+
+  @apply absolute
+         left-1/2
+         top-1/2
+         h-[650px]
+         w-[650px]
+         rounded-full;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.08),
+    transparent 70%
+  );
+
+  filter: blur(80px);
+
+  pointer-events: none;
+}
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
 
 @media (max-width: 768px) {
   .hero-content {
@@ -196,5 +336,13 @@
 
   .hero-animation {
     @apply h-[320px];
+  }
+
+  .hero-title {
+    line-height: 1.15;
+  }
+
+  .hero-description {
+    @apply mx-auto;
   }
 }

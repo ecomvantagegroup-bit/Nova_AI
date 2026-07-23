@@ -8,8 +8,8 @@ export default {
     return (
       <>
         <Navbar />
+
         <Hero />
-        
 
         <section
           id="about"
