@@ -9,20 +9,22 @@
          flex
          min-h-screen
          items-center
-         overflow-hidden
-         bg-gradient-to-br
-         from-slate-950
-         via-slate-900
-         to-blue-950;
+         overflow-hidden;
 }
 
 /* ==========================================================
    BACKGROUND
    ========================================================== */
 
+/* Update this in hero.css */
 .hero-overlay {
-  @apply absolute inset-0;
-  background: rgba(0, 0, 0, 0.45);
+  @apply absolute inset-0 pointer-events-none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.45) 85%,
+    transparent 100%
+  );
 }
 
 .hero-bg {
