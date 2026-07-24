@@ -1,11 +1,6 @@
 import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Observer } from "gsap/Observer";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import "./aboutStory.css";
-
-gsap.registerPlugin(ScrollTrigger, Observer, ScrollToPlugin);
 
 const slidesData = [
   {
@@ -57,11 +52,9 @@ export default defineComponent({
     const containerRef = ref(null);
 
     let ctx = null;
-    let observerInstance = null;
-    let pinTrigger = null;
     let isAnimating = false;
     let autoPlayTimer = null;
-    const AUTO_PLAY_INTERVAL = 4000; // Time in ms (4 seconds)
+    const AUTO_PLAY_INTERVAL = 4000; // Time in milliseconds (4 seconds)
 
     let sections = [];
     let images = [];
@@ -80,7 +73,7 @@ export default defineComponent({
     const startAutoPlay = () => {
       stopAutoPlay();
       autoPlayTimer = setInterval(() => {
-        if (!isAnimating && observerInstance?.isEnabled) {
+        if (!isAnimating) {
           const nextIdx = (activeIndex.value + 1) % slidesData.length;
           gotoSection(nextIdx, 1);
         }
@@ -116,42 +109,8 @@ export default defineComponent({
       });
     };
 
-    const releaseScroll = (direction) => {
-      stopAutoPlay();
-      if (observerInstance) {
-        observerInstance.disable();
-      }
-
-      if (pinTrigger) {
-        const targetScroll =
-          direction > 0
-            ? pinTrigger.end + 2
-            : pinTrigger.start - 2;
-
-        gsap.to(window, {
-          scrollTo: targetScroll,
-          duration: 0.1,
-          overwrite: "auto",
-        });
-      }
-    };
-
     const gotoSection = (index, direction) => {
-      const total = slidesData.length;
-
-      if (isAnimating) return false;
-
-      if (index < 0) {
-        releaseScroll(-1);
-        return false;
-      }
-
-      if (index >= total) {
-        releaseScroll(1);
-        return false;
-      }
-
-      if (index === activeIndex.value) return false;
+      if (isAnimating || index === activeIndex.value) return false;
 
       isAnimating = true;
       const prevIndex = activeIndex.value;
@@ -222,84 +181,12 @@ export default defineComponent({
 
         activeIndex.value = 0;
         setInitialState();
-
-        observerInstance = Observer.create({
-          target: window,
-          type: "wheel,touch",
-          wheelSpeed: -1,
-          tolerance: 14,
-          preventDefault: true,
-          debounce: false,
-          onUp: () => {
-            if (isAnimating) return;
-            resetAutoPlay();
-            gotoSection(activeIndex.value + 1, 1);
-          },
-          onDown: () => {
-            if (isAnimating) return;
-            resetAutoPlay();
-            gotoSection(activeIndex.value - 1, -1);
-          },
-        });
-
-        observerInstance.disable();
-
-        pinTrigger = ScrollTrigger.create({
-          trigger: container,
-          start: "top top",
-          end: "+=1",
-          pin: true,
-          pinSpacing: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onEnter: (self) => {
-            if (self.direction > 0) {
-              activeIndex.value = 0;
-              setInitialState();
-              observerInstance?.enable();
-              startAutoPlay();
-            }
-          },
-          onEnterBack: (self) => {
-            if (self.direction < 0) {
-              activeIndex.value = slidesData.length - 1;
-              sections.forEach((sec, idx) => {
-                if (idx === slidesData.length - 1) {
-                  gsap.set(sec, { autoAlpha: 1, zIndex: 2 });
-                  gsap.set(outerWrappers[idx], { yPercent: 0 });
-                  gsap.set(innerWrappers[idx], { yPercent: 0 });
-                  gsap.set(images[idx], { yPercent: 0 });
-                  gsap.set(headingChars[idx], { autoAlpha: 1, yPercent: 0 });
-                } else {
-                  gsap.set(sec, { autoAlpha: 0, zIndex: 0 });
-                  gsap.set(outerWrappers[idx], { yPercent: -100 });
-                  gsap.set(innerWrappers[idx], { yPercent: 100 });
-                  gsap.set(images[idx], { yPercent: -15 });
-                  gsap.set(headingChars[idx], { autoAlpha: 0, yPercent: -120 });
-                }
-              });
-              observerInstance?.enable();
-              startAutoPlay();
-            }
-          },
-          onLeave: () => {
-            observerInstance?.disable();
-            stopAutoPlay();
-          },
-          onLeaveBack: () => {
-            observerInstance?.disable();
-            stopAutoPlay();
-          },
-        });
-
-        ScrollTrigger.refresh();
+        startAutoPlay();
       }, container);
     });
 
     onBeforeUnmount(() => {
       stopAutoPlay();
-      observerInstance?.kill();
-      pinTrigger?.kill();
       ctx?.revert();
     });
 
