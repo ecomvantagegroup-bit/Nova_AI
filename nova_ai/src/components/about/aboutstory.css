@@ -1,8 +1,7 @@
-
 @reference "../../style.css";
 
-
 .story-observer-container {
+  /* relative ensures absolute children stay contained inside this section */
   @apply relative w-full h-screen overflow-hidden bg-slate-950 text-white select-none;
 }
 
@@ -35,12 +34,13 @@
   @apply inline-block will-change-transform;
 }
 
+/* CHANGED: Switched from fixed to absolute, boosted z-index to stay above slides */
 .story-nav-dots {
-  @apply fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3;
+  @apply absolute right-6 top-1/2 -translate-y-1/2 z-30 flex flex-col gap-3 pointer-events-auto;
 }
 
 .story-dot {
-  @apply w-3 h-3 rounded-full border border-slate-600 bg-slate-900/80 transition-all duration-300 cursor-pointer;
+  @apply w-3 h-3 rounded-full border border-slate-600 bg-slate-900/80 transition-all duration-300 cursor-pointer hover:border-cyan-400;
 }
 
 .story-dot.active {
