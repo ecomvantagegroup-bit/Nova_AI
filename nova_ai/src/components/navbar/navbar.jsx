@@ -216,6 +216,7 @@ export default defineComponent({
                   "linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%)",
                 boxShadow: "0 8px 25px rgba(99, 102, 241, 0.4)",
               }}
+              onClick={() => scrollTo("pricing")}
             >
               Get Started
             </button>
