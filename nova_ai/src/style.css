@@ -31,63 +31,32 @@ button {
 }
 
 /* -------------------------------------------------------------
-   Custom Left-Side Scrollbar Logic
+   Transparent Custom Scrollbar
    ------------------------------------------------------------- */
 
-/* Hide default browser scrollbar */
-html, body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
 
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
-
-/* Target container for left scrollbar styling */
-.custom-scrollbar-left {
-  /* Move WebKit scrollbar to the left side */
-  direction: rtl; 
-  overflow-y: auto;
-  height: 100vh;
-}
-
-/* Reset inner content back to Left-to-Right layout */
-.custom-scrollbar-left > * {
-  direction: ltr;
-}
-
-/* Hide scrollbar track & thumb by default */
-.custom-scrollbar-left::-webkit-scrollbar {
+/* WebKit (Chrome, Safari, Edge) */
+html::-webkit-scrollbar {
   width: 8px;
   background: transparent;
 }
 
-.custom-scrollbar-left::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
   background: transparent;
   border-radius: 9999px;
   transition: background-color 0.2s ease-in-out;
 }
 
-/* Reveal the scrollbar thumb when hovering over the hover-zone */
-.left-hover-zone:hover + .custom-scrollbar-left::-webkit-scrollbar-thumb,
-.custom-scrollbar-left:hover::-webkit-scrollbar-thumb {
-  background: rgba(100, 116, 139, 0.5); /* Slate color preview */
-}
-
-.left-hover-zone:hover + .custom-scrollbar-left::-webkit-scrollbar-thumb:hover,
-.custom-scrollbar-left::-webkit-scrollbar-thumb:hover {
-  background: rgba(6, 182, 212, 0.8); /* Cyan accent on direct thumb hover */
-}
-
-/* Firefox alternative (supported browsers) */
-.custom-scrollbar-left {
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-}
-
-.left-hover-zone:hover + .custom-scrollbar-left,
-.custom-scrollbar-left:hover {
-  scrollbar-color: rgba(100, 116, 139, 0.5) transparent;
+/* Optional: Slight tint on hover so users know where the scrollbar is */
+html::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.4);
 }
