@@ -4,6 +4,7 @@ import Navbar from "./components/navbar/Navbar";
 import Hero from "./components/hero/Hero";
 import Features from "./components/features/Features";
 import AboutStory from "./components/about/AboutStory";
+import Workflow from "./components/workflow/Workflow";
 
 
 export default defineComponent({
@@ -32,6 +33,10 @@ export default defineComponent({
 
           <section id="about" class="relative w-full bg-slate-950">
             <AboutStory />
+          </section>
+
+          <section id="workflow" class="relative w-full bg-slate-950">
+            <Workflow />
           </section>
 
           <section
