@@ -50,6 +50,7 @@ export default defineComponent({
 
           tl.to(navbarRef.value, {
             y: 0,
+            xPercent: 0,
             opacity: 1,
             duration: 0.6,
           })
@@ -69,6 +70,7 @@ export default defineComponent({
           // Hide navbar when back at the top
           gsap.to(navbarRef.value, {
             y: -100,
+            xPercent: 0,
             opacity: 0,
             duration: 0.4,
             ease: "power3.in",
@@ -142,6 +144,7 @@ export default defineComponent({
       // Hide initially off-screen
       gsap.set(navbarRef.value, {
         y: -100,
+        xPercent: 0,
         opacity: 0,
       });
 
@@ -163,7 +166,7 @@ export default defineComponent({
     return () => (
       <header
         ref={navbarRef}
-        class="fixed top-3 md:top-4 left-1/2 z-50 w-[95%] max-w-7xl -translate-x-1/2 transition-all duration-300"
+        class="fixed top-3 md:top-4 inset-x-0 mx-auto z-50 w-[95%] max-w-7xl transition-all duration-300"
       >
         <nav
           class="flex items-center justify-between rounded-full px-6 py-3.5 md:px-8 md:py-4 backdrop-blur-xl"
