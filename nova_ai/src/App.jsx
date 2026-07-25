@@ -56,11 +56,11 @@ export default defineComponent({
           </section>
 
           <section
-            id="contact"
-            class="relative w-full min-h-screen flex items-center justify-center bg-slate-950 border-t border-slate-800/50 py-24"
+            id="contact" class="relative w-full min-h-screen flex items-center justify-center bg-slate-950 border-t border-slate-800/50 py-24"
           >
             <Contact />
           </section>
+
           <footer id="footer" class="relative w-full bg-slate-950 border-t border-slate-800/50">
             <Footer />
           </footer>
