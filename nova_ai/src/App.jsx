@@ -48,6 +48,10 @@ export default defineComponent({
           <section id="pricing" class="relative w-full bg-slate-950">
             <Pricing />
           </section>
+          
+          <section id="faq" class="relative w-full bg-slate-950">
+            <Faq />
+          </section>
 
           <section
             id="contact"
