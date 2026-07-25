@@ -257,6 +257,7 @@ export default defineComponent({
               style={{
                 background:
                   "linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%)",
+                onClick: () => scrollTo("pricing")
               }}
             >
               Get Started
