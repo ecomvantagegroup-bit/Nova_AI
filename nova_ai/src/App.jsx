@@ -5,6 +5,7 @@ import Hero from "./components/hero/Hero";
 import Features from "./components/features/Features";
 import AboutStory from "./components/about/AboutStory";
 import Workflow from "./components/workflow/Workflow";
+import Testimonials from "./components/testimonials/Testimonials";
 
 
 export default defineComponent({
@@ -37,6 +38,10 @@ export default defineComponent({
 
           <section id="workflow" class="relative w-full bg-slate-950">
             <Workflow />
+          </section>
+
+          <section id="testimonials" class="relative w-full bg-slate-950">
+            <Testimonials />
           </section>
 
           <section
