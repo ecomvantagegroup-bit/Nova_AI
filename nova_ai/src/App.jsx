@@ -9,6 +9,7 @@ import Testimonials from "./components/testimonials/Testimonials";
 import Pricing from "./components/pricing/Pricing";
 import Faq from "./components/faq/faq";
 import Contact from "./components/contacts/contacts";
+import Footer from "./components/footer/footer";
 
 export default defineComponent({
   name: "App",
@@ -60,6 +61,9 @@ export default defineComponent({
           >
             <Contact />
           </section>
+          <footer id="footer" class="relative w-full bg-slate-950 border-t border-slate-800/50">
+            <Footer />
+          </footer>
         </main>
       </div>
     );
