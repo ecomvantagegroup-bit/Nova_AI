@@ -1,0 +1,11 @@
+@reference "../../style.css";
+/* Input focus glowing ring */
+.contact-input:focus {
+  box-shadow: 0 0 15px -3px rgba(6, 182, 212, 0.25);
+}
+
+/* Custom styling for standard select dropdown in dark mode */
+.contact-input option {
+  background-color: #020617;
+  color: #e2e8f0;
+}
