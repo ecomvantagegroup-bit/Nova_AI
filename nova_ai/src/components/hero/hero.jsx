@@ -194,7 +194,7 @@ export default defineComponent({
             <div class="hero-buttons">
               <button
                 class="btn-primary"
-                onClick={() => scrollToSection("contact")}
+                onClick={() => scrollToSection("pricing")}
               >
                 Start a Project
               </button>
