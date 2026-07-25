@@ -1,4 +1,4 @@
-import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
+import { defineComponent, ref, onMounted, onBeforeUnmount, nextTick } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./pricing.css";
@@ -80,7 +80,34 @@ export default defineComponent({
     let ctx = null;
 
     const toggleBilling = () => {
-      isYearly.value = !isYearly.value;
+      // Animate price cards on toggle switch
+      const cards = gsap.utils.toArray(".pricing-card", sectionRef.value);
+      
+      gsap.to(cards, {
+        scale: 0.97,
+        autoAlpha: 0.5,
+        duration: 0.15,
+        stagger: 0.05,
+        ease: "power2.in",
+        onComplete: () => {
+          isYearly.value = !isYearly.value;
+          
+          nextTick(() => {
+            gsap.fromTo(
+              cards,
+              { scale: 0.97, autoAlpha: 0.5, y: 15 },
+              {
+                scale: 1,
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.4,
+                stagger: 0.08,
+                ease: "back.out(1.7)",
+              }
+            );
+          });
+        },
+      });
     };
 
     onMounted(() => {
