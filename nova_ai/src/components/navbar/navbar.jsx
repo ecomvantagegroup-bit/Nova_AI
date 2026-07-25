@@ -256,9 +256,11 @@ export default defineComponent({
               class="w-[calc(100%-2rem)] m-4 py-3 rounded-full text-center font-semibold text-white text-sm transition-transform duration-300 active:scale-95"
               style={{
                 background:
-                  "linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%)",
-                onClick: () => scrollTo("pricing")
+
+                "linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%)",
               }}
+
+              onClick={() => scrollTo("pricing")}
             >
               Get Started
             </button>
