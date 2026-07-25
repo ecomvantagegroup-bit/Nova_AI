@@ -8,6 +8,7 @@ import Workflow from "./components/workflow/Workflow";
 import Testimonials from "./components/testimonials/Testimonials";
 import Pricing from "./components/pricing/Pricing";
 import Faq from "./components/faq/faq";
+import Contact from "./components/contacts/contacts";
 
 export default defineComponent({
   name: "App",
@@ -48,7 +49,7 @@ export default defineComponent({
           <section id="pricing" class="relative w-full bg-slate-950">
             <Pricing />
           </section>
-          
+
           <section id="faq" class="relative w-full bg-slate-950">
             <Faq />
           </section>
@@ -57,20 +58,7 @@ export default defineComponent({
             id="contact"
             class="relative w-full min-h-screen flex items-center justify-center bg-slate-950 border-t border-slate-800/50 py-24"
           >
-            <div class="max-w-xl text-center space-y-6 px-6">
-              <span class="inline-block px-3 py-1 text-xs font-semibold tracking-widest text-cyan-400 uppercase bg-cyan-950/60 border border-cyan-800/40 rounded-full">
-                Get In Touch
-              </span>
-
-              <h1 class="text-5xl font-bold tracking-tight text-white sm:text-6xl">
-                Start Your Next Project
-              </h1>
-
-              <p class="text-slate-400 text-lg leading-relaxed">
-                Ready to automate your workflows? Let&apos;s discuss how Nova AI can
-                integrate with your tech stack.
-              </p>
-            </div>
+            <Contact />
           </section>
         </main>
       </div>

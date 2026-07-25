@@ -1,0 +1,9 @@
+@reference "../../style.css";
+/* Smooth hover states and custom glow effects for footer items */
+#footer a {
+  will-change: color, transform;
+}
+
+#footer .footer-anim {
+  will-change: opacity, transform;
+}

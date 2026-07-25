@@ -1,12 +1,12 @@
 import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./contact.css";
+import "./contacts.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default defineComponent({
-  name: "Contact",
+  name: "Contacts",
 
   setup() {
     const sectionRef = ref(null);
@@ -87,7 +87,7 @@ export default defineComponent({
     return () => (
       <section
         ref={sectionRef}
-        id="contact"
+        id="contacts"
         class="relative w-full py-28 bg-slate-950 overflow-hidden text-white"
       >
         {/* Ambient Glow Effects */}
