@@ -6,7 +6,7 @@ import Features from "./components/features/Features";
 import AboutStory from "./components/about/AboutStory";
 import Workflow from "./components/workflow/Workflow";
 import Testimonials from "./components/testimonials/Testimonials";
-
+import Pricing from "./components/pricing/Pricing";
 
 export default defineComponent({
   name: "App",
@@ -42,6 +42,10 @@ export default defineComponent({
 
           <section id="testimonials" class="relative w-full bg-slate-950">
             <Testimonials />
+          </section>
+
+          <section id="pricing" class="relative w-full bg-slate-950">
+            <Pricing />
           </section>
 
           <section
