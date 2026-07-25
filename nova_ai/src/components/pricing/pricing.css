@@ -1,0 +1,20 @@
+@reference "../../style.css";
+
+/* Pricing Card Glow & Elevation Effects */
+.pricing-card {
+  box-shadow: 0 20px 50px -15px rgba(6, 182, 212, 0.25);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease;
+  will-change: transform, opacity;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(6, 182, 212, 0.6);
+  box-shadow: 0 30px 60px -15px rgba(6, 182, 212, 0.35);
+}
+
+.pricing-feature-item {
+  will-change: transform, opacity;
+}
