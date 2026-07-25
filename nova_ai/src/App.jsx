@@ -7,6 +7,7 @@ import AboutStory from "./components/about/AboutStory";
 import Workflow from "./components/workflow/Workflow";
 import Testimonials from "./components/testimonials/Testimonials";
 import Pricing from "./components/pricing/Pricing";
+import Faq from "./components/faq/faq";
 
 export default defineComponent({
   name: "App",
