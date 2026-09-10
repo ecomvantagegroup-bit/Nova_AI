@@ -7,7 +7,7 @@ import AboutStory from "./components/about/aboutstory.jsx";
 import Workflow from "./components/workflow/workflow.jsx";
 import Testimonials from "./components/testimonials/testimonials.jsx";
 import Pricing from "./components/pricing/pricing.jsx";
-import Faq from "./components/faq/faq/-,jsx";
+import Faq from "./components/faq/faq.jsx";
 import Contact from "./components/contacts/contacts.jsx";
 import Footer from "./components/footer/footer.jsx";
 
