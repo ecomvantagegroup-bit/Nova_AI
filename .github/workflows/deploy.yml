@@ -20,7 +20,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./nove_ai # <-- Updated to nove_ai
+        working-directory: ./nove_ai
 
     steps:
       - name: Checkout
@@ -31,7 +31,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: ./nove_ai/package-lock.json # <-- Updated to nove_ai
+          # Fixed path format: removed leading './' so the lookup functions properly
+          cache-dependency-path: nove_ai/package-lock.json 
 
       - name: Install dependencies
         run: npm install
@@ -42,7 +43,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./nove_ai/dist # <-- Updated to nove_ai
+          # This remains relative to workspace root
+          path: ./nove_ai/dist 
 
   deploy:
     needs: build
