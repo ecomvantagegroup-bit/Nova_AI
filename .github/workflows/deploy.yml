@@ -20,7 +20,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./nove_ai
+        working-directory: ./nova_ai
 
     steps:
       - name: Checkout
@@ -41,7 +41,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./nove_ai/dist 
+          path: ./nova_ai/dist 
 
   deploy:
     needs: build
