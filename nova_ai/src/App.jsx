@@ -1,6 +1,6 @@
 import { defineComponent } from "vue";
 
-import Navbar from "./components/navbar/Navbar";
+import Navbar from "./components/navbar/navbar.jsx";
 import Hero from "./components/hero/Hero";
 import Features from "./components/features/Features";
 import AboutStory from "./components/about/AboutStory";
