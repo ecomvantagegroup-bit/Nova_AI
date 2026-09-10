@@ -1,16 +1,15 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import vue from '@tailwindcss/vite' // or '@vitejs/plugin-vue' depending on your import setup
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/nova_ai/',
+  base: '/Nova_AI/', // <-- Updated to match your exact repo name casing
 
   server: { 
     host: true, 
-    // Allow any tunnel host domain (Serveo, Ngrok, VS Code, etc.)
     allowedHosts: true, 
   },
 
