@@ -1,15 +1,15 @@
 import { defineComponent } from "vue";
 
 import Navbar from "./components/navbar/navbar.jsx";
-import Hero from "./components/hero/Hero";
-import Features from "./components/features/Features";
-import AboutStory from "./components/about/AboutStory";
-import Workflow from "./components/workflow/Workflow";
-import Testimonials from "./components/testimonials/Testimonials";
-import Pricing from "./components/pricing/Pricing";
-import Faq from "./components/faq/faq";
-import Contact from "./components/contacts/contacts";
-import Footer from "./components/footer/footer";
+import Hero from "./components/hero/hero.jsx";
+import Features from "./components/features/features.jsx";
+import AboutStory from "./components/about/aboutstory.jsx";
+import Workflow from "./components/workflow/workflow.jsx";
+import Testimonials from "./components/testimonials/testimonials.jsx";
+import Pricing from "./components/pricing/pricing.jsx";
+import Faq from "./components/faq/faq/-,jsx";
+import Contact from "./components/contacts/contacts.jsx";
+import Footer from "./components/footer/footer.jsx";
 
 export default defineComponent({
   name: "App",
