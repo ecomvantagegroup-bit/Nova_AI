@@ -1,6 +1,6 @@
 import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
 import gsap from "gsap";
-import "./aboutStory.css";
+import "./aboutstory.css";
 
 const slidesData = [
   {
