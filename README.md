@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Nova AI** is a premium, single-page landing page built to showcase the **Base Launch Package ($2,000)** offered by Vantage Digital. It is designed as a fictional AI startup that helps businesses automate workflows with intelligent AI agents.
+**Nova AI** is a premium, single-page landing page built to showcase the **Base Launch Package** offered by Vantage Digital. It is designed as a fictional AI startup that helps businesses automate workflows with intelligent AI agents.
 
 The goal of this project is to demonstrate the quality, design, animations, and user experience clients receive with the base package—without any paid add-ons.
 
@@ -16,7 +16,6 @@ The goal of this project is to demonstrate the quality, design, animations, and 
 | Industry     | AI Startup                    |
 | Type         | Single Page Application (SPA) |
 | Package      | Base Launch                   |
-| Price        | $2,000                        |
 | Framework    | Nuxt 4 (Vue 3)                |
 | Language     | TypeScript                    |
 | Status       | Demo Project                  |
@@ -192,7 +191,6 @@ Single pricing card highlighting the starter plan.
 
 Includes:
 
-* Price
 * Features
 * Primary CTA
 
