@@ -6,22 +6,25 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/Nova_AI/', // <-- Keeps matching your GitHub Repo name
+    base: '/', 
 
-  server: { 
-    host: true, 
-    allowedHosts: true, 
-  },
-
-  plugins: [
-    vue(),
-    tailwindcss(),
-    vueJsx(),
-    vueDevTools(), 
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    server: {
+        host: true,
+        allowedHosts: true,
+        watch: {
+            ignored: ['**/.vs/**', '**/.git/**'],
+        },
     },
-  },
+
+    plugins: [
+        vue(),
+        tailwindcss(),
+        vueJsx(),
+        vueDevTools(),
+    ],
+    resolve: {
+        alias: {
+            '@': fileURLToPath(new URL('./src', import.meta.url)),
+        },
+    },
 })
