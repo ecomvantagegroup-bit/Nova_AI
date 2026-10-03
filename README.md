@@ -1,392 +1,200 @@
 # Nova AI — Premium AI Startup Landing Page
 
-## Overview
+> ⚠️ **Demo project only.** Nova AI is a fictional company and this site is a portfolio demonstration. It is not a real product or service. The company, testimonials, pricing, team details, statistics and contact information are placeholder content, and no real transactions, sign-ups or messages are processed.
 
-**Nova AI** is a premium, single-page landing page built to showcase the **Base Launch Package** offered by Vantage Digital. It is designed as a fictional AI startup that helps businesses automate workflows with intelligent AI agents.
+A dark, premium, single-page landing site for **Nova AI**, a fictional AI startup that helps businesses automate workflows with autonomous AI agents. It is a demo built by **Vantage Digital** to show the quality, design, animation and user experience clients get with the **Base Launch Package**, with no paid add-ons.
 
-The goal of this project is to demonstrate the quality, design, animations, and user experience clients receive with the base package—without any paid add-ons.
-
----
-
-# Project Information
-
-| Property     | Value                         |
-| ------------ | ----------------------------- |
-| Project Name | Nova AI                       |
-| Industry     | AI Startup                    |
-| Type         | Single Page Application (SPA) |
-| Package      | Base Launch                   |
-| Framework    | Nuxt 4 (Vue 3)                |
-| Language     | TypeScript                    |
-| Status       | Demo Project                  |
+**🔗 Live demo:** [https://nova-ai-8da.pages.dev/](https://nova-ai-8da.pages.dev/)
 
 ---
 
-# Purpose
+## Project Information
 
-Nova AI serves as a portfolio-quality demonstration website that showcases:
-
-* Premium UI/UX
-* Modern startup branding
-* Interactive Three.js hero
-* Smooth GSAP animations
-* Responsive design
-* SEO-friendly architecture
-* Fast loading performance
-
-The project is intended to impress potential clients and clearly communicate the value of the Base Launch package.
-
----
-
-# Design Philosophy
-
-The design follows a modern Silicon Valley startup aesthetic inspired by industry-leading AI companies.
-
-### Design Characteristics
-
-* Dark premium interface
-* Minimal layout
-* Large typography
-* Glassmorphism cards
-* Soft glowing gradients
-* Interactive 3D visuals
-* Smooth micro-interactions
-* Conversion-focused sections
+| Property     | Value                                 |
+| ------------ | ------------------------------------- |
+| Project Name | Nova AI                               |
+| Industry     | AI Startup                            |
+| Type         | Single Page Application (SPA)         |
+| Package      | Base Launch                           |
+| Framework    | Vue 3 + Vite 8 (JSX components)       |
+| Styling      | Tailwind CSS 4 + per-component CSS    |
+| Animation    | GSAP (ScrollTrigger, Flip)            |
+| 3D           | Three.js                              |
+| Hosting      | Cloudflare Pages                      |
+| Status       | Demo Project                          |
 
 ---
 
-# Technology Stack
+## Highlights
 
-## Framework
-
-* Nuxt 4
-* Vue 3
-
-## Language
-
-* TypeScript
-
-## Styling
-
-* Tailwind CSS
-
-## Animations
-
-* GSAP
-* ScrollTrigger
-
-## 3D Graphics
-
-* Three.js
-* TresJS
-* Post Processing
-
-## Icons
-
-* Lucide Vue
-
-## Forms
-
-* vee-validate
-* Zod
-
-## Fonts
-
-* Space Grotesk
-* Inter
-* Sora
+- Dark premium interface with glowing cyan / blue / purple gradients
+- Interactive Three.js particle orb in the hero that follows the mouse
+- GSAP scroll-triggered reveals, character-by-character headings and staggered entrances
+- Feature cards that expand into a modal using GSAP Flip
+- Pricing with a Monthly / Yearly toggle and animated price changes
+- Animated FAQ accordion and an animated contact form with a success state
+- Responsive layout with a mobile menu and a navbar that changes on scroll
+- Smooth anchor scrolling between sections
 
 ---
 
-# Features
+## Page Sections
 
-* Responsive Navigation
-* Interactive Three.js Hero
-* Animated Background
-* Scroll-based GSAP Animations
-* Feature Showcase
-* AI Workflow Timeline
-* Testimonials
-* Pricing Section
-* FAQ Accordion
-* Contact Form
-* Responsive Footer
-* Mobile Navigation
-* SEO Optimized
-* Performance Optimized
+The page is assembled in `src/App.jsx` in this order:
 
----
+| #  | Section      | Anchor          | What it contains                                                                                          |
+| -- | ------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
+| 1  | Navbar       | (fixed header)  | Blur-on-scroll bar, desktop links, animated mobile dropdown                                               |
+| 2  | Hero         | `#hero`         | Headline, description, "Start a Project" / "Learn More" buttons, Three.js particle orb                     |
+| 3  | Features     | `#features`     | Six cards: AI Chatbots, Workflow Automation, Knowledge Search, Voice AI, Predictive Analytics, Enterprise Security |
+| 4  | About Story  | `#about`        | Scroll-driven story: autonomous intelligence, resilience, multi-agent core, feedback loops, road to AGI  |
+| 5  | Workflow     | `#workflow`     | Four-step timeline: Idea & Architecture, Model Training, Edge Deployment, Full Automation                 |
+| 6  | Testimonials | `#testimonials` | Review cards with name, role, company, star rating and quote                                              |
+| 7  | Pricing      | `#pricing`      | Starter, Professional (most popular) and Enterprise plans with a monthly / yearly switch                  |
+| 8  | FAQ          | `#faq`          | Accordion covering agents, deployment, execution limits, billing and SLAs                                 |
+| 9  | Contact      | `#contact`      | Company info and a form (name, email, use case, message)                                                  |
+| 10 | Footer       | `#footer`       | Logo, link columns, social icons, copyright                                                               |
 
-# Landing Page Sections
-
-## 1. Navigation
-
-* Sticky navigation bar
-* Blur background on scroll
-* Responsive mobile menu
-* Smooth scrolling
+> The contact form is a front-end demo: submission is simulated with a short delay and a success message, and nothing is sent to a server. Several footer links are placeholders.
 
 ---
 
-## 2. Hero Section
+## Technology Stack
 
-Includes:
+| Area        | Tools                                                    |
+| ----------- | -------------------------------------------------------- |
+| Framework   | Vue 3 (JSX via `@vitejs/plugin-vue-jsx`), Vite 8         |
+| Language    | JavaScript (JSX components) with TypeScript tooling (`vue-tsc`) |
+| Styling     | Tailwind CSS 4 (`@tailwindcss/vite`) and component CSS   |
+| Animation   | GSAP, ScrollTrigger, Flip                                |
+| 3D Graphics | Three.js (custom particle system)                        |
+| Icons       | `@lucide/vue`                                            |
+| Routing     | `vue-router` (installed, no routes defined yet)          |
+| Tooling     | ESLint, Prettier, Vue DevTools plugin                    |
 
-* Large marketing headline
-* Supporting description
-* Dual call-to-action buttons
-* Interactive Three.js AI orb
-* Animated particles
-* Background gradients
-
----
-
-## 3. Features
-
-A six-card feature grid presenting the platform's core capabilities.
-
-Example features:
-
-* AI Chatbots
-* Workflow Automation
-* Knowledge Search
-* Voice AI
-* Analytics
-* Enterprise Security
+**Requirements:** Node.js `^22.18.0` or `>=24.12.0`.
 
 ---
 
-## 4. Scroll Story
+## Design
 
-A GSAP-powered section where key marketing messages animate during scrolling to create a premium storytelling experience.
+### Color palette
 
----
+| Purpose            | Value                                             |
+| ------------------ | ------------------------------------------------- |
+| Background         | `#020617` (Tailwind slate-950)                    |
+| Secondary surface  | `#0F172A` (Tailwind slate-900)                    |
+| Text               | `#F8FAFC`                                         |
+| Accents            | Cyan, blue, purple and emerald gradients          |
 
-## 5. Workflow
+### Typography
 
-A visual timeline explaining the product flow:
+Body text uses **Inter** with a system font fallback stack.
 
-1. Idea
-2. Training
-3. Deployment
-4. Automation
+### Hero 3D orb
 
----
-
-## 6. Testimonials
-
-Customer review cards with:
-
-* Avatar
-* Name
-* Company
-* Rating
-* Review
+The hero renders a particle orb with `THREE.Points`. The mouse position is smoothed with interpolation and drives the orb's rotation, on top of a slow continuous spin.
 
 ---
 
-## 7. Pricing
+## Getting Started
 
-Single pricing card highlighting the starter plan.
+All commands run inside the `nova_ai/` folder.
 
-Includes:
-
-* Features
-* Primary CTA
-
----
-
-## 8. FAQ
-
-Animated accordion answering common customer questions.
-
----
-
-## 9. Contact
-
-Split layout containing:
-
-* Company information
-* Contact form
-* Call-to-action
-
----
-
-## 10. Footer
-
-Contains:
-
-* Logo
-* Navigation links
-* Social icons
-* Copyright
-
----
-
-# Animations
-
-The website uses GSAP extensively.
-
-### Hero
-
-* Fade In
-* Scale
-* Slide
-* Stagger
-* Parallax
-
-### Scroll
-
-* Reveal animations
-* Text transitions
-* Timeline animations
-
-### Hover
-
-* Glow
-* Lift
-* Scale
-* Rotation
-
-### Buttons
-
-* Magnetic hover
-* Ripple
-* Gradient animation
-
-### Cards
-
-* Elevation
-* Border glow
-* Shadow animation
-
----
-
-# Three.js Features
-
-The hero includes an interactive 3D experience featuring:
-
-* Floating AI orb
-* Mouse interaction
-* Bloom effect
-* Particle system
-* Noise distortion
-* Smooth rotation
-* Dynamic lighting
-
----
-
-# Color Palette
-
-| Purpose    | Color   |
-| ---------- | ------- |
-| Background | #06070A |
-| Surface    | #0E1015 |
-| Cards      | #11131A |
-| Primary    | #4F7EFF |
-| Secondary  | #7C4DFF |
-| Text       | #FFFFFF |
-| Muted Text | #A6A8B5 |
-
----
-
-# Typography
-
-## Headings
-
-Space Grotesk
-
-## Body
-
-Inter
-
-## Statistics
-
-Sora
-
----
-
-# Project Structure
-
-```text
-nova-ai/
-├── assets/
-├── components/
-│   ├── hero/
-│   ├── features/
-│   ├── pricing/
-│   ├── testimonials/
-│   ├── faq/
-│   ├── contact/
-│   ├── layout/
-│   ├── ui/
-│   └── three/
-├── composables/
-├── layouts/
-├── pages/
-├── plugins/
-├── public/
-├── types/
-├── utils/
-├── app.vue
-├── nuxt.config.ts
-└── package.json
+```bash
+git clone https://github.com/ecomvantagegroup-bit/Nova_AI.git
+cd Nova_AI/nova_ai
+npm install
+npm run dev
 ```
 
----
+### Scripts
 
-# Performance Goals
-
-* Lighthouse Performance: 95+
-* Accessibility: 95+
-* SEO: 95+
-* Best Practices: 100
-* Fully Responsive
-* Optimized Images
-* Lazy Loaded Assets
-* Fast Initial Load
-
----
-
-# Browser Support
-
-* Chrome
-* Edge
-* Firefox
-* Safari
-
-Latest stable versions.
+| Command              | Description                                  |
+| -------------------- | -------------------------------------------- |
+| `npm run dev`        | Start the Vite dev server                    |
+| `npm run build`      | Type-check, then build for production        |
+| `npm run build-only` | Build without type-checking                  |
+| `npm run type-check` | Run `vue-tsc`                                |
+| `npm run preview`    | Preview the production build locally         |
+| `npm run format`     | Format `src/` with Prettier                  |
+| `npm run deploy`     | Publish `dist/` with `gh-pages`              |
 
 ---
 
-# Development Goals
+## Project Structure
 
-This project demonstrates the complete Base Launch package by showcasing:
+```text
+Nova_AI/
+├── .github/workflows/deploy.yml   # Optional GitHub Pages deploy
+├── favicon.png
+├── package.json
+└── nova_ai/                       # The application
+    ├── index.html
+    ├── vite.config.ts
+    ├── tsconfig*.json
+    ├── public/
+    │   └── favicon.jpg
+    └── src/
+        ├── main.jsx               # App entry
+        ├── App.jsx                # Section layout
+        ├── style.css              # Tailwind import and global styles
+        ├── router/router.jsx
+        └── components/
+            ├── navbar/
+            ├── hero/              # hero.jsx, hero_canvas.jsx (Three.js)
+            ├── features/          # features.jsx, featuresCards.jsx
+            ├── about/             # aboutstory.jsx
+            ├── workflow/
+            ├── testimonials/
+            ├── pricing/
+            ├── faq/
+            ├── contacts/
+            └── footer/
+```
 
-* Premium visual design
-* Interactive user experience
-* High-quality animations
-* Modern frontend architecture
-* Clean component structure
-* Production-ready code quality
+Each component folder holds a `.jsx` file and, where needed, a matching `.css` file.
 
 ---
 
-# Future Expansion
+## Deployment
 
-Although this demo intentionally excludes paid add-ons, it is designed to support future enhancements such as:
+The live demo is hosted on **Cloudflare Pages**: [https://nova-ai-8da.pages.dev/](https://nova-ai-8da.pages.dev/)
 
-* CMS integration
-* Blog
-* Newsletter
-* Analytics
-* Booking system
-* Multi-language support
-* API integrations
-* Additional landing pages
+Recommended Cloudflare Pages build settings:
+
+| Setting                | Value           |
+| ---------------------- | --------------- |
+| Root directory         | `nova_ai`       |
+| Build command          | `npm run build` |
+| Build output directory | `dist`          |
+| Node.js version        | 22 or newer     |
+
+`vite.config.ts` uses `base: '/'`, which is correct for Cloudflare Pages and custom domains.
+
+> The repo also contains `.github/workflows/deploy.yml`, which builds and deploys to GitHub Pages on every push to `main`. It is a secondary option. If you only use Cloudflare, you can delete the workflow. If you keep GitHub Pages, serving from a project path such as `/Nova_AI/` requires changing `base` to `'/Nova_AI/'`.
 
 ---
 
-# License
+## Browser Support
 
-This project is a portfolio demonstration created by **Vantage Digital** to showcase premium website design and frontend development capabilities. It is intended for demonstration and client presentation purposes.
+Latest stable versions of Chrome, Edge, Firefox and Safari.
+
+---
+
+## Future Expansion
+
+The demo intentionally excludes paid add-ons, but the structure supports later additions such as:
+
+- CMS integration and a blog
+- Newsletter and analytics
+- Real form submission (email service or API)
+- Booking system
+- Multi-language support
+- Additional landing pages and routes
+
+---
+
+## License
+
+This project is a portfolio demonstration created by **Vantage Digital** to showcase premium website design and frontend development capabilities. It is intended **for demonstration and client presentation purposes only** and is not a live commercial product. Nova AI, its pricing, testimonials and all other content are fictional.
